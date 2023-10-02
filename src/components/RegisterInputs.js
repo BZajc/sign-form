@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function RegisterInputs() {
   const [formData, setFormData] = useState({
@@ -8,10 +8,6 @@ function RegisterInputs() {
     password: "",
     confirmPassword: "",
   });
-
-  useEffect(() => {
-    console.log(formData)
-  }, [formData])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,42 +20,51 @@ function RegisterInputs() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="firstName"
-        value={formData.firstName}
-        placeholder="first name"
-        onChange={handleInputChange}
-      ></input>
-      <input
-        type="text"
-        name="lastName"
-        value={formData.lastName}
-        placeholder="last name"
-        onChange={handleInputChange}
-      ></input>
-      <input
-        type="email"
-        name="email"
-        value={formData.email}
-        placeholder="email"
-        onChange={handleInputChange}
-      ></input>
-      <input
-        type="password"
-        name="password"
-        value={formData.password}
-        placeholder="password"
-        onChange={handleInputChange}
-      ></input>
-      <input
-        type="password"
-        name="confirmPassword"
-        value={formData.confirmPassword}
-        placeholder="password"
-        onChange={handleInputChange}
-      ></input>
-      <button type="submit">Confirm</button>
+      <div className="form__names">
+        <input
+          className="form__firstname form__input"
+          type="text"
+          name="firstName"
+          value={formData.firstName}
+          placeholder="first name"
+          onChange={handleInputChange}
+        ></input>
+        <input
+          className="form__lastname form__input"
+          type="text"
+          name="lastName"
+          value={formData.lastName}
+          placeholder="last name"
+          onChange={handleInputChange}
+        ></input>
+      </div>
+      <div className="form__main">
+        <input
+          className="form__email form__input"
+          type="email"
+          name="email"
+          value={formData.email}
+          placeholder="email"
+          onChange={handleInputChange}
+        ></input>
+        <input
+          className="form__password form__input"
+          type="password"
+          name="password"
+          value={formData.password}
+          placeholder="password"
+          onChange={handleInputChange}
+        ></input>
+        <input
+          className="form__password form__input"
+          type="password"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          placeholder="password"
+          onChange={handleInputChange}
+        ></input>
+        <button className="form__confirm" type="submit">Confirm</button>
+      </div>
     </form>
   );
 }
