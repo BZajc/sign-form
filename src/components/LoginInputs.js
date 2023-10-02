@@ -11,8 +11,25 @@ function LoginInputs() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:3005/users");
+      const users = await response.json();
+      const user = users.find(
+        (user) =>
+          user.email === formData.email && user.password === formData.password
+      );
+
+      if (user) {
+        console.log("User has been logged in");
+      } else {
+        console.log("Wrong email or password");
+      }
+    } catch (err) {
+      console.log("An error occured while trying to log in", err);
+    }
   };
 
   return (
@@ -34,7 +51,9 @@ function LoginInputs() {
           placeholder="password"
           onChange={handleInputChange}
         ></input>
-        <button className="form__confirm" type="submit">Confirm</button>
+        <button className="form__confirm" type="submit">
+          Login
+        </button>
       </div>
     </form>
   );

@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "firstName": "Marcin",
+      "lastName": "Wiśniewski",
+      "email": "wisnia@gaymail.com",
+      "password": "Ei2js8eo0",
+      "confirmPassword": "Ei2js8eo0",
+      "id": 1
+    }
+  ]
+}

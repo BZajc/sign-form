@@ -14,8 +14,26 @@ function RegisterInputs() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:3005/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if(response.ok) {
+        console.log("User has been registered");
+      } else {
+        console.log("Error occured while creating an account");
+      }
+    } catch(err) {
+      console.log("Error:", err);
+    }
   };
 
   return (
@@ -63,7 +81,7 @@ function RegisterInputs() {
           placeholder="password"
           onChange={handleInputChange}
         ></input>
-        <button className="form__confirm" type="submit">Confirm</button>
+        <button className="form__confirm" type="submit">Register</button>
       </div>
     </form>
   );

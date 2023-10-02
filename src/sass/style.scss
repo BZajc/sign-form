@@ -8,14 +8,10 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  background: rgb(214, 193, 241);
-  background: linear-gradient(
-    135deg,
-    rgba(214, 193, 241, 1) 11%,
-    rgba(144, 216, 223, 1) 48%,
-    rgba(89, 92, 201, 1) 100%
-  );
-
+    background-image: url('../images/background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .line-through {
@@ -49,7 +45,8 @@ body {
     padding: 0.75rem;
     margin-bottom: 2rem;
     cursor: pointer;
-    background: rgba(153, 205, 235, 0.747);
+    background: rgb(14,109,255);
+    background: linear-gradient(180deg, rgb(93, 151, 238) 5%, rgb(184, 241, 232) 100%);
     border: none;
     font-size: 1.5rem;
     transition: color 0.3s;
@@ -131,14 +128,14 @@ body {
     width: 200px;
     height: 40px;
     font-size: 1.5rem;
-    background-color: rgba(37, 219, 113, 0.5);
+    background-color: rgba(37, 183, 219, 0.5);
     border: 2px solid rgb(130, 163, 172);
     border-radius: 8px;
     cursor: pointer;
     transition: background-color .3s, box-shadow .3s;
 
     &:hover {
-    background-color: rgb(75, 196, 125);
+    background-color: rgb(75, 182, 196);
     border: none;
     box-shadow: 0px 0px 5px 2px black;
     }
