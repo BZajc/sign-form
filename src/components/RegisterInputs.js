@@ -9,7 +9,7 @@ function RegisterInputs() {
     password: "",
     confirmPassword: "",
   });
-  const [message, setMessage] = useState("Enter data")
+  const [message, setMessage] = useState("Enter data");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,6 +19,29 @@ function RegisterInputs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const { firstName, lastName, email, password, confirmPassword } = formData;
+
+    if (!firstName || !lastName || !email || !password || !confirmPassword) {
+      setMessage("All fields are required");
+      return;
+    }
+
+    if (password.length < 8) {
+      setMessage("Password must be at least 8 characters long");
+      return;
+    }
+
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-])/;
+    if (!passwordRegex.test(password)) {
+      setMessage("Password must contain at least one uppercase letter and one special character");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setMessage("Passwords do not match");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:3005/users", {
         method: "POST",
@@ -26,15 +49,15 @@ function RegisterInputs() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      })
+      });
 
-      if(response.ok) {
+      if (response.ok) {
         setMessage("User has been registered");
       } else {
-        setMessage("Error occured while creating an account");
+        setMessage("Error occurred while creating an account");
       }
-    } catch(err) {
-      setMessage("Error:", err);
+    } catch (err) {
+      setMessage("Error occurred while creating an account");
     }
   };
 

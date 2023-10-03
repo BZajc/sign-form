@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Validation from "./Validation";
 
 function LoginInputs() {
@@ -6,7 +6,7 @@ function LoginInputs() {
     email: "",
     password: "",
   });
-  const [ message, setMessage ] = useState("Enter data")
+  const [message, setMessage] = useState("Enter data");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +30,7 @@ function LoginInputs() {
         setMessage("Wrong email or password");
       }
     } catch (err) {
-      setMessage("An error occured while trying to log in", err);
+      setMessage("An error occurred while trying to log in");
     }
   };
 

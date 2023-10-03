@@ -1,5 +1,12 @@
 {
   "users": [
-    
+    {
+      "firstName": "test",
+      "lastName": "test user",
+      "email": "test@gmail.com",
+      "password": "TestUser1!",
+      "confirmPassword": "TestUser1!",
+      "id": 1
+    }
   ]
 }
