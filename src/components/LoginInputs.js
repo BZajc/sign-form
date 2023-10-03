@@ -1,10 +1,12 @@
 import { useState } from "react";
+import Validation from "./Validation";
 
 function LoginInputs() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const [ message, setMessage ] = useState("Enter data")
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,12 +25,12 @@ function LoginInputs() {
       );
 
       if (user) {
-        console.log("User has been logged in");
+        setMessage("User has been logged in");
       } else {
-        console.log("Wrong email or password");
+        setMessage("Wrong email or password");
       }
     } catch (err) {
-      console.log("An error occured while trying to log in", err);
+      setMessage("An error occured while trying to log in", err);
     }
   };
 
@@ -51,6 +53,7 @@ function LoginInputs() {
           placeholder="password"
           onChange={handleInputChange}
         ></input>
+        <Validation message={message} />
         <button className="form__confirm" type="submit">
           Login
         </button>

@@ -19,10 +19,6 @@ function App() {
       </div>
       <div>
         {registerVisible ? <RegisterInputs /> : <LoginInputs />}
-
-        <span className="line-through">
-            Made in React & JSON-Server. Temporarily missing: Redux, React-Redux, Redux Toolkit, 
-        </span>
       </div>
     </div>
   );

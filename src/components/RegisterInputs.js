@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Validation from "./Validation";
 
 function RegisterInputs() {
   const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ function RegisterInputs() {
     password: "",
     confirmPassword: "",
   });
+  const [message, setMessage] = useState("Enter data")
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,12 +29,12 @@ function RegisterInputs() {
       })
 
       if(response.ok) {
-        console.log("User has been registered");
+        setMessage("User has been registered");
       } else {
-        console.log("Error occured while creating an account");
+        setMessage("Error occured while creating an account");
       }
     } catch(err) {
-      console.log("Error:", err);
+      setMessage("Error:", err);
     }
   };
 
@@ -81,6 +83,7 @@ function RegisterInputs() {
           placeholder="password"
           onChange={handleInputChange}
         ></input>
+        <Validation message={message}/>
         <button className="form__confirm" type="submit">Register</button>
       </div>
     </form>
